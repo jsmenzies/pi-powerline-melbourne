@@ -1,60 +1,39 @@
 # pi-powerline-melbourne
 
-A local repo for custom `pi` extensions.
+A compact `pi` footer extension with a powerline-style status line focused on context usage.
 
-Currently includes:
+![pi-powerline-melbourne footer](assets/pi-powerline-melbourne-footer.png)
 
-- `powerline-context/index.ts` — a lightweight nerd-style powerline footer focused on **current context tokens** (`ctx.getContextUsage()`), not just `%`.
+## Segments (left → right)
 
-## What this footer does
+- **pi**: pi icon/label
+- **path**: current working directory (home is shortened to `~`)
+- **git**: current branch
+- **model**: selected model + thinking level (`min`, `med`, `xhi`, etc.)
+- **context_tokens**: `used/window` token view
+- **mcp**: MCP server status (`connected/total`)
 
-- Nerd-ish visual style (with ASCII fallback)
-- Default segments: pi logo, cwd, git branch, model (+thinking level), context tokens, MCP server status
-- Shows **context token count** as `used/window` (e.g. `38k/200k`)
-- Color warnings for context pressure:
-  - `> 70%` warning
-  - `> 90%` error
-- Toggle command: `/powerline-melbourne on|off`
+## Context warnings (default)
 
-## Customize segments
+- **< 50%**: OK (green)
+- **50% to < 70%**: warning (yellow)
+- **>= 70%**: high usage (red)
 
-Edit this array in `powerline-context/index.ts`:
+You can also show percent by setting `showPercentInContext: true` in `powerline-context/index.ts`.
 
-```ts
-const CONFIG = {
-  segments: ["pi", "path", "git", "model", "context_tokens", "mcp"],
-  ...
-}
-```
+## Command
 
-Available segment IDs:
+- `/powerline-melbourne on|off`
 
-- `pi`
-- `model`
-- `path`
-- `git`
-- `context_tokens`
-- `mcp`
-
-If you want percent as well, set:
-
-```ts
-showPercentInContext: true
-```
-
-## Run locally
-
-### Option A — quick test
+## Use from this repo
 
 ```bash
 pi -e /home/james/git/pi-powerline-melbourne/powerline-context/index.ts
 ```
 
-### Option B — install as global extension
+## Install as extension
 
 ```bash
 mkdir -p ~/.pi/agent/extensions/powerline-context
 cp /home/james/git/pi-powerline-melbourne/powerline-context/index.ts ~/.pi/agent/extensions/powerline-context/index.ts
 ```
-
-Then restart `pi` or run `/reload`.
