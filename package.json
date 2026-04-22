@@ -1,6 +1,6 @@
 {
   "name": "pi-powerline-melbourne",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "private": false,
   "type": "module",
   "description": "Custom pi extensions, including a nerd-style powerline footer with context token count",
