@@ -16,6 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+      id-token: write
 
     steps:
       - name: Checkout
@@ -41,22 +42,9 @@ jobs:
           PUBLISHED=$(npm view "${{ steps.pkg.outputs.name }}" version 2>/dev/null || echo "none")
           echo "version=$PUBLISHED" >> "$GITHUB_OUTPUT"
 
-      - name: Ensure NPM_TOKEN is set
-        if: steps.pkg.outputs.version != steps.published.outputs.version
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: |
-          if [ -z "$NPM_TOKEN" ]; then
-            echo "NPM_TOKEN is not configured in GitHub Actions secrets."
-            echo "Add it at: Settings -> Secrets and variables -> Actions -> New repository secret"
-            exit 1
-          fi
-
       - name: Publish if version is new
         if: steps.pkg.outputs.version != steps.published.outputs.version
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npm publish --access public
+        run: npm publish --access public --provenance
 
       - name: Skip publish (version unchanged)
         if: steps.pkg.outputs.version == steps.published.outputs.version
