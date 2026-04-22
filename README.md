@@ -4,6 +4,18 @@ A compact `pi` footer extension with a powerline-style status line focused on co
 
 ![pi-powerline-melbourne footer](assets/pi-powerline-melbourne-footer.png)
 
+## Install
+
+```bash
+pi install npm:pi-powerline-melbourne
+```
+
+For project-local install:
+
+```bash
+pi install -l npm:pi-powerline-melbourne
+```
+
 ## Segments (left → right)
 
 - **pi**: pi icon/label
