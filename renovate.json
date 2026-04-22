@@ -4,6 +4,16 @@
   "labels": ["dependencies"],
   "timezone": "Australia/Melbourne",
   "rangeStrategy": "bump",
+  "enabledManagers": ["npm", "github-actions"],
+  "schedule": ["at any time"],
+  "prHourlyLimit": 0,
+  "prConcurrentLimit": 0,
+  "packageRules": [
+    {
+      "matchManagers": ["github-actions"],
+      "labels": ["dependencies", "github-actions"]
+    }
+  ],
   "lockFileMaintenance": {
     "enabled": true,
     "schedule": ["before 5am on monday"]
