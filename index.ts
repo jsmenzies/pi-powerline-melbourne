@@ -115,7 +115,7 @@ function renderSegment(
 
   switch (id) {
     case "pi":
-      return theme.fg(CONFIG.segmentColors.pi ?? "accent", `${icon.pi} `);
+      return theme.fg(CONFIG.segmentColors.pi ?? "accent", `${icon.pi}`);
 
     case "model": {
       const level = getThinkingLabel(pi);
@@ -127,7 +127,7 @@ function renderSegment(
     }
 
     case "path":
-      return theme.fg(CONFIG.segmentColors.path ?? "mdLink", `${icon.path}  ${formatDisplayPath(ctx.cwd)}`);
+      return theme.fg(CONFIG.segmentColors.path ?? "mdLink", `${icon.path} ${formatDisplayPath(ctx.cwd)}`);
 
     case "git": {
       const branch = footerData.getGitBranch();
