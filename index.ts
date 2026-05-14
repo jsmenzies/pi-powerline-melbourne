@@ -1,5 +1,5 @@
-import { copyToClipboard, type ExtensionAPI, type ReadonlyFooterDataProvider, type Theme, type ThemeColor } from "@mariozechner/pi-coding-agent";
-import { truncateToWidth, visibleWidth } from "@mariozechner/pi-tui";
+import { copyToClipboard, type ExtensionAPI, type ReadonlyFooterDataProvider, type Theme, type ThemeColor } from "@earendil-works/pi-coding-agent";
+import { truncateToWidth, visibleWidth } from "@earendil-works/pi-tui";
 import { renderFixedEditorCluster } from "./fixed-editor/cluster.ts";
 import { emergencyTerminalModeReset, TerminalSplitCompositor } from "./fixed-editor/terminal-split.ts";
 
